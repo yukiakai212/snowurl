@@ -19,7 +19,7 @@ If you are tired of bugs caused by paths like `:id.html`, `:name-doc+x`, or mism
 
 ## Features
 
-* ✅ **Strict parameter grammar**: `[a-z0-9_]+`
+* ✅ **Strict parameter grammar**: `[A-Za-z0-9_]+`
 * ✅ Parameters stop at the **first invalid character**
 * ✅ Extensions and suffixes are always **literal**
 * ✅ Runtime behavior === TypeScript types
@@ -57,7 +57,7 @@ url("/:name-doc+x", { name: "snow" });
 
 ```
 :param
-param := [a-z0-9_]+
+param := [A-Za-z0-9_]+
 ```
 
 * A parameter **starts with `:`**
@@ -66,6 +66,12 @@ param := [a-z0-9_]+
 * Everything after that is treated as **literal text**
 
 There are **no options** to change this behavior.
+
+---
+
+### API
+
+See docs: [API Docs][api-docs-url]
 
 ---
 
@@ -111,7 +117,7 @@ url("/:name-doc", {
 
 ```
 Unknown param "name-doc".
-Only parameters matching [a-z0-9_] are allowed.
+Only parameters matching [A-Za-z0-9_] are allowed.
 ```
 
 ---
@@ -218,3 +224,4 @@ MIT © [Yuki Akai](https://github.com/yukiakai212)
 [codecov-image]: https://codecov.io/gh/yukiakai212/snowurl/branch/main/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/yukiakai212/snowurl
 [changelog-url]: https://github.com/yukiakai212/snowurl/blob/main/CHANGELOG.md
+[api-docs-url]: https://yukiakai212.github.io/snowurl/

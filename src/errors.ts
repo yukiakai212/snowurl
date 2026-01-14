@@ -18,7 +18,8 @@ export class InvalidParamDeclarationError extends SnowurlError {
   constructor(position: number) {
     super(
       SnowurlErrorCode.INVALID_PARAM_DECLARATION,
-      `Invalid param declaration at position ${position}. ` + `Param names must match [a-z0-9_]+`,
+      `Invalid param declaration at position ${position}. ` +
+        `Param names must match [a-zA-Z0-9_]+`,
     );
     this.name = 'InvalidParamDeclarationError';
   }
@@ -35,7 +36,7 @@ export class UnknownParamError extends SnowurlError {
   constructor(name: string) {
     super(
       SnowurlErrorCode.UNKNOWN_PARAM,
-      `Unknown param "${name}"` + `Only [a-z0-9_]+ params defined in path are allowed.`,
+      `Unknown param "${name}"` + `Only [a-zA-Z0-9_]+ params defined in path are allowed.`,
     );
     this.name = 'UnknownParamError';
   }

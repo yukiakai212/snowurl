@@ -16,7 +16,8 @@
     "format:check": "prettier --check **/*.{js,ts}",
     "lint": "eslint src/**/*.ts",
     "build": "npx tsup",
-    "docs": "npx typedoc"
+    "docs": "npx typedoc",
+    "prepare": "husky"
   },
   "files": [
     "dist/*",
@@ -37,6 +38,7 @@
   ],
   "author": "Yuki_akai",
   "homepage": "https://github.com/yukiakai212/snowurl",
+  "funding": "https://github.com/yukiakai212",
   "engines": {
     "node": ">= 16"
   },
@@ -61,6 +63,7 @@
     "@vitest/coverage-v8": "^4.0.15",
     "dotenv": "^17.0.1",
     "eslint": "^9.30.0",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "tsup": "^8.5.1",
     "tsx": "^4.20.3",

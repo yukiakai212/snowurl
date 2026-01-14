@@ -6,7 +6,40 @@ export type ParamValue = string | number | boolean;
 
 type Token = { type: 'literal'; value: string } | { type: 'param'; name: string };
 
-const IDENT_RE = /^[a-z0-9_]+/;
+type AlphaLower =
+  | 'a'
+  | 'b'
+  | 'c'
+  | 'd'
+  | 'e'
+  | 'f'
+  | 'g'
+  | 'h'
+  | 'i'
+  | 'j'
+  | 'k'
+  | 'l'
+  | 'm'
+  | 'n'
+  | 'o'
+  | 'p'
+  | 'q'
+  | 'r'
+  | 's'
+  | 't'
+  | 'u'
+  | 'v'
+  | 'w'
+  | 'x'
+  | 'y'
+  | 'z';
+
+type AlphaUpper = Uppercase<AlphaLower>;
+type Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+
+type IdentChar = AlphaLower | AlphaUpper | Digit | '_';
+
+const IDENT_RE = /^[a-zA-Z0-9_]+/;
 
 /* ---------- Parser ---------- */
 
@@ -89,44 +122,7 @@ export function url<T extends string, P extends Record<ExtractParams<T>, ParamVa
 export type ExtractParams<S extends string> = S extends `${string}:${infer R}`
   ? R extends `${infer Head}${infer Tail}`
     ? Head extends `${infer C}${infer Rest}`
-      ? C extends
-          | 'a'
-          | 'b'
-          | 'c'
-          | 'd'
-          | 'e'
-          | 'f'
-          | 'g'
-          | 'h'
-          | 'i'
-          | 'j'
-          | 'k'
-          | 'l'
-          | 'm'
-          | 'n'
-          | 'o'
-          | 'p'
-          | 'q'
-          | 'r'
-          | 's'
-          | 't'
-          | 'u'
-          | 'v'
-          | 'w'
-          | 'x'
-          | 'y'
-          | 'z'
-          | '0'
-          | '1'
-          | '2'
-          | '3'
-          | '4'
-          | '5'
-          | '6'
-          | '7'
-          | '8'
-          | '9'
-          | '_'
+      ? C extends IdentChar
         ? `${C}${ExtractIdent<Rest>}` | ExtractParams<Tail>
         : never
       : never
@@ -134,44 +130,7 @@ export type ExtractParams<S extends string> = S extends `${string}:${infer R}`
   : never;
 
 type ExtractIdent<S extends string> = S extends `${infer C}${infer Rest}`
-  ? C extends
-      | 'a'
-      | 'b'
-      | 'c'
-      | 'd'
-      | 'e'
-      | 'f'
-      | 'g'
-      | 'h'
-      | 'i'
-      | 'j'
-      | 'k'
-      | 'l'
-      | 'm'
-      | 'n'
-      | 'o'
-      | 'p'
-      | 'q'
-      | 'r'
-      | 's'
-      | 't'
-      | 'u'
-      | 'v'
-      | 'w'
-      | 'x'
-      | 'y'
-      | 'z'
-      | '0'
-      | '1'
-      | '2'
-      | '3'
-      | '4'
-      | '5'
-      | '6'
-      | '7'
-      | '8'
-      | '9'
-      | '_'
+  ? C extends IdentChar
     ? `${C}${ExtractIdent<Rest>}`
     : ''
   : '';

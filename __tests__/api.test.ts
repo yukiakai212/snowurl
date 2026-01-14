@@ -40,6 +40,15 @@ describe('snowurl', () => {
     expect(result).toBe('/flags/false');
   });
 
+  it('supports uppercase letters in param names', () => {
+    const result = url('/user/:UserID/profile', { UserID: 123 });
+    expect(result).toBe('/user/123/profile');
+  });
+
+  it('is case-sensitive for param names', () => {
+    expect(() => url('/user/:UserID', { userid: 1 } as any)).toThrow();
+  });
+
   /* ---------- Error cases ---------- */
 
   it('throws if param is missing', () => {
