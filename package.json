@@ -1,0 +1,72 @@
+{
+  "name": "snowurl",
+  "version": "1.0.0",
+  "description": "A strict, predictable URL builder for TypeScript. No magic. No ambiguity. No broken typings",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "test": "npm run build && npx vitest run --reporter verbose --coverage",
+    "format": "prettier --write **/*.{js,ts}",
+    "format:check": "prettier --check **/*.{js,ts}",
+    "lint": "eslint src/**/*.ts",
+    "build": "npx tsup",
+    "docs": "npx typedoc"
+  },
+  "files": [
+    "dist/*",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "snowurl",
+    "urlcat",
+    "url",
+    "cjs",
+    "esm",
+    "typescript",
+    "uri",
+    "build",
+    "builder",
+    "concat",
+    "concatenate"
+  ],
+  "author": "Yuki_akai",
+  "homepage": "https://github.com/yukiakai212/snowurl",
+  "engines": {
+    "node": ">= 16"
+  },
+  "maintainers": [
+    {
+      "name": "Yuki_akai",
+      "homepage": "https://github.com/yukiakai212"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukiakai212/snowurl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yukiakai212/snowurl/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8",
+    "@eslint/js": "^9.30.1",
+    "@types/node": "^24.0.10",
+    "@vitest/coverage-v8": "^4.0.15",
+    "dotenv": "^17.0.1",
+    "eslint": "^9.30.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.1",
+    "tsx": "^4.20.3",
+    "typedoc": "^0.28.9",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vitest": "^4.0.15"
+  }
+}
