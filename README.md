@@ -61,7 +61,7 @@ param := [A-Za-z0-9_]+
 ```
 
 * A parameter **starts with `:`**
-* Its name may contain **only** `a–z`, `0–9`, `_`
+* Its name may contain **only** `A–Z`, `a–z`, `0–9`, `_`
 * The parameter **ends immediately** when an invalid character is encountered
 * Everything after that is treated as **literal text**
 

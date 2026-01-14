@@ -17,7 +17,7 @@
     "lint": "eslint src/**/*.ts",
     "build": "npx tsup",
     "docs": "npx typedoc",
-    "prepare": "husky"
+    "prepare": "is-ci || husky"
   },
   "files": [
     "dist/*",
@@ -38,7 +38,7 @@
   ],
   "author": "Yuki_akai",
   "homepage": "https://github.com/yukiakai212/snowurl",
-  "funding": "https://github.com/yukiakai212",
+  "funding": "https://github.com/sponsors/yukiakai212",
   "engines": {
     "node": ">= 16"
   },
@@ -64,6 +64,7 @@
     "dotenv": "^17.0.1",
     "eslint": "^9.30.0",
     "husky": "^9.1.7",
+    "is-ci": "^4.1.0",
     "prettier": "^3.6.2",
     "tsup": "^8.5.1",
     "tsx": "^4.20.3",
