@@ -1,5 +1,11 @@
 # @yukiakai/find-up
 
+## 1.1.0
+
+### Minor Changes
+
+- 4ed23a4: Support A-Z case
+
 ## 1.1.6
 
 ### Patch Changes
