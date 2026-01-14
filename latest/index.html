@@ -1,0 +1,147 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>snowurl</title><meta name="description" content="Documentation for snowurl"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">snowurl</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>snowurl</h1></div><div class="tsd-panel tsd-typography"><h1 id="snowurl" class="tsd-anchor-link">snowurl<a href="#snowurl" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p><a href="https://www.npmjs.com/package/snowurl"><img src="https://badgen.net/npm/v/snowurl" alt="NPM Version"></a>
+<a href="https://www.npmjs.com/package/snowurl"><img src="https://badgen.net/npm/dm/snowurl" alt="NPM Downloads"></a></p>
+<p><a href="https://github.com/yukiakai212/snowurl/"><img src="https://github.com/yukiakai212/snowurl/actions/workflows/build.yml/badge.svg" alt="Build Status"></a>
+<a href="https://codecov.io/gh/yukiakai212/snowurl"><img src="https://codecov.io/gh/yukiakai212/snowurl/branch/main/graph/badge.svg" alt="codecov"></a></p>
+<h1 id="snowurl-1" class="tsd-anchor-link">snowurl<a href="#snowurl-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><blockquote>
+<p>A strict, predictable URL builder for TypeScript.
+No magic. No ambiguity. No broken typings.</p>
+</blockquote>
+<p><strong>snowurl</strong> is a rule-based alternative to <code>urlcat</code>, designed to fix long-standing issues with ambiguous parameter resolution and unreliable TypeScript inference.</p>
+<p>If you are tired of bugs caused by paths like <code>:id.html</code>, <code>:name-doc+x</code>, or mismatched runtime vs typing behavior — this library is for you.</p>
+<hr>
+<h2 id="features" class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>✅ <strong>Strict parameter grammar</strong>: <code>[a-z0-9_]+</code></li>
+<li>✅ Parameters stop at the <strong>first invalid character</strong></li>
+<li>✅ Extensions and suffixes are always <strong>literal</strong></li>
+<li>✅ Runtime behavior === TypeScript types</li>
+<li>✅ Fail-fast with clear error messages</li>
+<li>✅ Supports CJS &amp; ESM</li>
+<li>✅ Zero dependencies</li>
+</ul>
+<hr>
+<h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">snowurl</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="usage" class="tsd-anchor-link">Usage<a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="ts"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">url</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-2">&quot;snowurl&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/file/:hash.tar.gz&quot;</span><span class="hl-1">, { </span><span class="hl-4">hash:</span><span class="hl-1"> </span><span class="hl-2">&quot;abc&quot;</span><span class="hl-1"> });</span><br/><span class="hl-5">// =&gt; &quot;/file/abc.tar.gz&quot;</span><br/><br/><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/:name-doc+x&quot;</span><span class="hl-1">, { </span><span class="hl-4">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;snow&quot;</span><span class="hl-1"> });</span><br/><span class="hl-5">// =&gt; &quot;/snow-doc+x&quot;</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="core-rule-very-important" class="tsd-anchor-link">Core Rule (Very Important)<a href="#core-rule-very-important" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="parameter-grammar" class="tsd-anchor-link">Parameter grammar<a href="#parameter-grammar" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code><span class="hl-1">:</span><span class="hl-4">param</span><br/><span class="hl-6">param</span><span class="hl-1"> := [</span><span class="hl-4">a</span><span class="hl-1">-</span><span class="hl-4">z0</span><span class="hl-1">-</span><span class="hl-7">9_</span><span class="hl-1">]+</span>
+</code><button>Copy</button></pre>
+
+<ul>
+<li>A parameter <strong>starts with <code>:</code></strong></li>
+<li>Its name may contain <strong>only</strong> <code>a–z</code>, <code>0–9</code>, <code>_</code></li>
+<li>The parameter <strong>ends immediately</strong> when an invalid character is encountered</li>
+<li>Everything after that is treated as <strong>literal text</strong></li>
+</ul>
+<p>There are <strong>no options</strong> to change this behavior.</p>
+<hr>
+<h2 id="examples" class="tsd-anchor-link">Examples<a href="#examples" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="1-literal-suffixes-extensions-formats-versions" class="tsd-anchor-link">1. Literal suffixes (extensions, formats, versions)<a href="#1-literal-suffixes-extensions-formats-versions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/download/:file.zip&quot;</span><span class="hl-1">, { </span><span class="hl-4">file:</span><span class="hl-1"> </span><span class="hl-2">&quot;data&quot;</span><span class="hl-1"> });</span><br/><span class="hl-5">// =&gt; &quot;/download/data.zip&quot;</span><br/><br/><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/v/:id@latest&quot;</span><span class="hl-1">, { </span><span class="hl-4">id:</span><span class="hl-1"> </span><span class="hl-7">123</span><span class="hl-1"> });</span><br/><span class="hl-5">// =&gt; &quot;/v/123@latest&quot;</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h3 id="2-mixed-characters-after-parameters" class="tsd-anchor-link">2. Mixed characters after parameters<a href="#2-mixed-characters-after-parameters" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/:name-doc+x&quot;</span><span class="hl-1">, { </span><span class="hl-4">name:</span><span class="hl-1"> </span><span class="hl-2">&quot;abc&quot;</span><span class="hl-1"> });</span><br/><span class="hl-5">// =&gt; &quot;abc-doc+x&quot;</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Here:</p>
+<ul>
+<li><code>name</code> is the parameter</li>
+<li><code>-doc+x</code> is always literal</li>
+</ul>
+<hr>
+<h2 id="invalid-usage-throws-errors" class="tsd-anchor-link">Invalid Usage (Throws Errors)<a href="#invalid-usage-throws-errors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="invalid-parameter-name" class="tsd-anchor-link">Invalid parameter name<a href="#invalid-parameter-name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/:name-doc&quot;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-2">&quot;name-doc&quot;</span><span class="hl-4">:</span><span class="hl-1"> </span><span class="hl-2">&quot;x&quot;</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+<p><strong>Error:</strong></p>
+<pre><code><span class="hl-4">Unknown</span><span class="hl-1"> </span><span class="hl-4">param</span><span class="hl-1"> </span><span class="hl-2">&quot;name-doc&quot;</span><span class="hl-1">.</span><br/><span class="hl-4">Only</span><span class="hl-1"> </span><span class="hl-4">parameters</span><span class="hl-1"> </span><span class="hl-4">matching</span><span class="hl-1"> [</span><span class="hl-4">a</span><span class="hl-1">-</span><span class="hl-4">z0</span><span class="hl-1">-</span><span class="hl-7">9_</span><span class="hl-1">] </span><span class="hl-4">are</span><span class="hl-1"> </span><span class="hl-4">allowed</span><span class="hl-1">.</span>
+</code><button>Copy</button></pre>
+
+<hr>
+<h3 id="missing-parameter" class="tsd-anchor-link">Missing parameter<a href="#missing-parameter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/user/:id&quot;</span><span class="hl-1">, {});</span>
+</code><button type="button">Copy</button></pre>
+
+<p><strong>Error:</strong></p>
+<pre><code><span class="hl-4">Missing</span><span class="hl-1"> </span><span class="hl-4">param</span><span class="hl-1"> </span><span class="hl-2">&quot;id&quot;</span>
+</code><button>Copy</button></pre>
+
+<hr>
+<h3 id="extra--unknown-parameter" class="tsd-anchor-link">Extra / unknown parameter<a href="#extra--unknown-parameter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/user/:id&quot;</span><span class="hl-1">, { </span><span class="hl-4">id:</span><span class="hl-1"> </span><span class="hl-7">1</span><span class="hl-1">, </span><span class="hl-4">foo:</span><span class="hl-1"> </span><span class="hl-2">&quot;bar&quot;</span><span class="hl-1"> });</span>
+</code><button type="button">Copy</button></pre>
+
+<p><strong>Error:</strong></p>
+<pre><code><span class="hl-4">Unknown</span><span class="hl-1"> </span><span class="hl-4">param</span><span class="hl-1"> </span><span class="hl-2">&quot;foo&quot;</span>
+</code><button>Copy</button></pre>
+
+<hr>
+<h2 id="why-snowurl-instead-of-urlcat" class="tsd-anchor-link">Why snowurl instead of urlcat?<a href="#why-snowurl-instead-of-urlcat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th></th>
+<th>urlcat</th>
+<th>snowurl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameter grammar</td>
+<td>Ambiguous</td>
+<td>Strict &amp; explicit</td>
+</tr>
+<tr>
+<td><code>:id.html</code></td>
+<td>May resolve incorrectly</td>
+<td>Always resolves <code>id</code></td>
+</tr>
+<tr>
+<td>TypeScript inference</td>
+<td>Often mismatched</td>
+<td>Matches runtime exactly</td>
+</tr>
+<tr>
+<td>Fail-fast errors</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Predictability</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>snowurl does not guess your intent — it enforces correctness.</strong></p>
+</blockquote>
+<hr>
+<h2 id="design-philosophy" class="tsd-anchor-link">Design Philosophy<a href="#design-philosophy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Explicit &gt; Magic</li>
+<li>Grammar &gt; Heuristics</li>
+<li>Correctness &gt; Flexibility</li>
+<li>Type safety is a <strong>first-class concern</strong></li>
+</ul>
+<p>If your path is:</p>
+<pre><code><span class="hl-1">/:</span><span class="hl-4">file</span><span class="hl-1">.</span><span class="hl-4">tar</span><span class="hl-1">.</span><span class="hl-4">gz</span>
+</code><button>Copy</button></pre>
+
+<p>Then the parameter is <strong>always</strong> <code>file</code>.
+<code>file.tar.gz</code> is never considered a parameter name.</p>
+<hr>
+<h2 id="typescript-support" class="tsd-anchor-link">TypeScript Support<a href="#typescript-support" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p><code>snowurl</code> infers parameter names at <strong>compile time</strong>:</p>
+<pre><code class="ts"><span class="hl-0">url</span><span class="hl-1">(</span><span class="hl-2">&quot;/:user_id/profile&quot;</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-4">user_id:</span><span class="hl-1"> </span><span class="hl-7">123</span><span class="hl-1">,   </span><span class="hl-5">// ✅</span><br/><span class="hl-1">  </span><span class="hl-5">// userId: 123  // ❌ TypeScript error</span><br/><span class="hl-1">});</span>
+</code><button type="button">Copy</button></pre>
+
+<p>This prevents an entire class of runtime bugs before your code runs.</p>
+<hr>
+<h2 id="when-should-you-use-snowurl" class="tsd-anchor-link">When should you use snowurl?<a href="#when-should-you-use-snowurl" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>REST / HTTP clients</li>
+<li>SDKs</li>
+<li>Internal tooling</li>
+<li>Long-lived projects that value correctness</li>
+<li>When <code>urlcat</code> has caused subtle or painful bugs</li>
+</ul>
+<hr>
+<h2 id="license" class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>MIT © <a href="https://github.com/yukiakai212">Yuki Akai</a></p>
+<hr>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#snowurl"><span>snowurl</span></a><a href="#snowurl-1"><span>snowurl</span></a><ul><li><a href="#features"><span>Features</span></a></li><li><a href="#installation"><span>Installation</span></a></li><li><a href="#usage"><span>Usage</span></a></li><li><a href="#core-rule-very-important"><span>Core <wbr/>Rule (<wbr/>Very <wbr/>Important)</span></a></li><li><ul><li><a href="#parameter-grammar"><span>Parameter grammar</span></a></li></ul></li><li><a href="#examples"><span>Examples</span></a></li><li><ul><li><a href="#1-literal-suffixes-extensions-formats-versions"><span>1. <wbr/>Literal suffixes (extensions, formats, versions)</span></a></li><li><a href="#2-mixed-characters-after-parameters"><span>2. <wbr/>Mixed characters after parameters</span></a></li></ul></li><li><a href="#invalid-usage-throws-errors"><span>Invalid <wbr/>Usage (<wbr/>Throws <wbr/>Errors)</span></a></li><li><ul><li><a href="#invalid-parameter-name"><span>Invalid parameter name</span></a></li><li><a href="#missing-parameter"><span>Missing parameter</span></a></li><li><a href="#extra--unknown-parameter"><span>Extra / unknown parameter</span></a></li></ul></li><li><a href="#why-snowurl-instead-of-urlcat"><span>Why snowurl instead of urlcat?</span></a></li><li><a href="#design-philosophy"><span>Design <wbr/>Philosophy</span></a></li><li><a href="#typescript-support"><span>Type<wbr/>Script <wbr/>Support</span></a></li><li><a href="#when-should-you-use-snowurl"><span>When should you use snowurl?</span></a></li><li><a href="#license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">snowurl</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
