@@ -164,13 +164,6 @@ Unknown param "foo"
 
 ---
 
-## Design Philosophy
-
-* Explicit > Magic
-* Grammar > Heuristics
-* Correctness > Flexibility
-* Type safety is a **first-class concern**
-
 If your path is:
 
 ```
@@ -204,6 +197,12 @@ This prevents an entire class of runtime bugs before your code runs.
 * Internal tooling
 * Long-lived projects that value correctness
 * When `urlcat` has caused subtle or painful bugs
+
+---
+
+## Changelog
+
+See full release notes in [CHANGELOG.md][changelog-url]
 
 ---
 

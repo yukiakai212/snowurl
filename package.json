@@ -8,7 +8,7 @@
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    "require": "./dist/index.cjs" 
   },
   "scripts": {
     "test": "npm run build && npx vitest run --reporter verbose --coverage",
@@ -21,7 +21,7 @@
   },
   "files": [
     "dist/*",
-    "CHANGELOG.md"
+    "CHANGELOG.md" 
   ],
   "keywords": [
     "snowurl",
