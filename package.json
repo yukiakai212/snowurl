@@ -1,6 +1,6 @@
 {
   "name": "snowurl",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A strict, predictable URL builder for TypeScript. No magic. No ambiguity. No broken typings",
   "type": "module",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.js",
-    "require": "./dist/index.cjs" 
+    "require": "./dist/index.cjs"
   },
   "scripts": {
     "test": "npm run build && npx vitest run --reporter verbose --coverage",
@@ -21,7 +21,7 @@
   },
   "files": [
     "dist/*",
-    "CHANGELOG.md" 
+    "CHANGELOG.md"
   ],
   "keywords": [
     "snowurl",
