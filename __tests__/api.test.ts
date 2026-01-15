@@ -45,10 +45,6 @@ describe('snowurl', () => {
     expect(result).toBe('/user/123/profile');
   });
 
-  it('is case-sensitive for param names', () => {
-    expect(() => url('/user/:UserID', { userid: 1 } as any)).toThrow();
-  });
-
   /* ---------- Error cases ---------- */
 
   it('throws if param is missing', () => {
@@ -69,6 +65,10 @@ describe('snowurl', () => {
 
   it('throws if param value is undefined', () => {
     expect(() => url('/user/:id', { id: undefined } as any)).toThrow(MissingParamError);
+  });
+
+  it('is case-sensitive for param names', () => {
+    expect(() => url('/user/:UserID', { userid: 1 } as any)).toThrow(MissingParamError);
   });
 
   /* ---------- Edge cases ---------- */
